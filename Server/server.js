@@ -36,7 +36,7 @@ app.use(
 
 // Database connection
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.REMOTE_MONGO_URI)
   .then(() => {
     console.log("DB connected successfully");
   })
