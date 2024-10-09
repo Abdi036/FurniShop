@@ -2,6 +2,8 @@
 import { Link } from "react-router-dom";
 import useAddToCart from "../hooks/useAddToCart";
 import { FaShoppingCart, FaTrashAlt, FaPencilAlt } from "react-icons/fa";
+
+
 function Card({ product, isAdmin, onEdit, onDelete }) {
   const addToCart = useAddToCart();
 
