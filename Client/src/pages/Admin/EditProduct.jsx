@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";
 
 export default function EditProduct() {
   const [product, setProduct] = useState({
@@ -69,7 +70,11 @@ export default function EditProduct() {
   };
 
   if (loading) {
-    return <div className="text-center text-lg">Loading product...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <FaSpinner className="animate-spin text-4xl text-blue-500" />
+      </div>
+    );
   }
 
   return (
