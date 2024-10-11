@@ -15,7 +15,7 @@ import {
 } from "react-icons/fa";
 
 import { logout } from "../redux/auth/authSlice";
-import { useDeleteMyProfile } from "../hooks/useDeleteMyProfile";
+import { useDeleteMyProfile } from "../hooks/useDeleteProfile";
 import { clearCart } from "../redux/cart/cartSlice";
 
 export default function Navbar() {
