@@ -25,12 +25,12 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="relative w-screen min-h-[100vh] bg-gray-100 flex flex-col justify-center items-center">
+      <div className="relative w-full min-h-[100vh] bg-gray-100 flex flex-col justify-center items-center">
         {/* Background Image with Smooth Transition */}
         <img
           src={bgImage}
           alt="Bg_img"
-          className={`absolute inset-0 w-full object-cover z-0 h-[100vh] transition-opacity duration-500 ${
+          className={`absolute inset-0 w-screen object-cover z-0 h-[100vh] transition-opacity duration-500 ${
             fade ? "opacity-100" : "opacity-0"
           }`}
         />
