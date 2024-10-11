@@ -80,6 +80,8 @@
     <p>Once the server is running, you can visit the application in your browser. Regular users can sign up, log in, browse products, add items to the cart, and complete purchases via Stripe. Admins have access to the admin dashboard to manage users, products, and orders.</p>
   <h2>License</h2>
     <p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+    <p>Documentation for the REst API <a href="https://documenter.getpostman.com/view/34690517/2sAXxP8XhP
+">>REst API</a</p>
 
 </body>
 </html>
