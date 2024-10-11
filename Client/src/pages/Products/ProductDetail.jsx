@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import useAddToCart from "../../hooks/useAddToCart";
+import { FaSpinner } from "react-icons/fa";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -36,7 +37,11 @@ export default function ProductDetail() {
   }, [token]);
 
   if (loading) {
-    return <div className="text-center text-lg">Loading products...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <FaSpinner className="animate-spin text-4xl text-blue-500" />
+      </div>
+    );
   }
 
   const product = products.find((product) => product._id === id);
