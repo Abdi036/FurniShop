@@ -112,7 +112,7 @@ export default function Navbar() {
                   to="/"
                   className="hidden sm:block text-black text-2xl font-extrabold tracking-wide"
                 >
-                  FurnShop
+                  FurniShop
                 </Link>
               </div>
             )}

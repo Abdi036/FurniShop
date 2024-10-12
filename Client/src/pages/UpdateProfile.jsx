@@ -55,7 +55,6 @@ export default function UpdateProfile() {
 
       dispatch(updateUser(res.data.data.user));
       alert("Profile updated successfully ✨✨✨");
-      // navigate(`${isAdmin}` ? "/admin/users" : "/");
       if (isAdmin) {
         navigate("/admin/users");
       } else {

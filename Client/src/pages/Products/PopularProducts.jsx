@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card";
+import { FaSpinner } from "react-icons/fa";
 
 export default function PopularProducts() {
   const [products, setProducts] = useState([]);
@@ -34,7 +35,11 @@ export default function PopularProducts() {
   }, [token]);
 
   if (loading) {
-    return <div className="text-center text-lg">Loading products...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <FaSpinner className="animate-spin text-4xl text-blue-500" />
+      </div>
+    );
   }
 
   return (
