@@ -57,6 +57,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        <p className="text-center pt-5">Copyright reserved 2024 &copy;</p>
       </div>
     </footer>
   );
