@@ -9,7 +9,7 @@ export default function Dashboard() {
     },
     {
       title: "Total Users",
-      value: "75",
+      value: "2",
       icon: <FaUser className="text-4xl text-green-500" />,
     },
     {

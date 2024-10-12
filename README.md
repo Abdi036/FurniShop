@@ -1,8 +1,9 @@
-
 </head>
 <body>
     <h1>Furnishop E-Commerce</h1>
     <p><strong>Furnishop</strong> is a modern and fully functional e-commerce platform focused on selling furniture online. It provides a comprehensive user experience for both customers and admins with a range of features including user authentication, product management, order processing, and payment integration.</p>
+
+    <img src="./upload pics/HomePage.png" alt="pics" />
 
   <h2>Features</h2>
     <h3>User Authentication</h3>
@@ -15,6 +16,8 @@
         <li><strong>Delete Account</strong>: Users can permanently delete their account.</li>
         <li><strong>Update Account</strong>: Users can update their account details like name, email, or password.</li>
     </ul>
+    <img src="./upload pics/Login.png" alt="pics" />
+    <img src="./upload pics/signup.png" alt="pics" />
 
    <h3>Shopping Features</h3>
     <ul>
@@ -23,7 +26,7 @@
         <li><strong>Remove</strong>:Users can remove products from cart.</li>
         <li><strong>Checkout</strong>: Secure checkout process using Stripe payment gateway.</li>
     </ul>
-
+    <img src="./upload pics/Cart page.png" alt="pics" />
 
   <h3>Admin Features</h3>
     <ul>
@@ -54,6 +57,8 @@
                 <li><strong>Search Users</strong>: Admin can search for users by name or email.</li>
    </li>
    </ul>
+   <img src="./upload pics/Admin user page.png" alt="pics" />
+   <img src="./upload pics/products page.png" alt="pics" />
   <h2>Technologies Used</h2>
   <ul>
         <li><strong>Frontend</strong>:ReactJS and RTK(Redux for state management)</li>
