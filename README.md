@@ -2,9 +2,6 @@
 <body>
     <h1>Furnishop E-Commerce</h1>
     <p><strong>Furnishop</strong> is a modern and fully functional e-commerce platform focused on selling furniture online. It provides a comprehensive user experience for both customers and admins with a range of features including user authentication, product management, order processing, and payment integration.</p>
-
-    <img src="./upload pics/HomePage.png" alt="pics" />
-
   <h2>Features</h2>
     <h3>User Authentication</h3>
     <ul>
