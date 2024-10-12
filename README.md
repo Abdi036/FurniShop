@@ -27,6 +27,7 @@
         <li><strong>Checkout</strong>: Secure checkout process using Stripe payment gateway.</li>
     </ul>
     <img src="./upload pics/Cart page.png" alt="pics" />
+    <img src="./upload pics/payment.png" alt="pics" />
 
   <h3>Admin Features</h3>
     <ul>
