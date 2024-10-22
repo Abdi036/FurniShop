@@ -24,7 +24,7 @@ import BedRoom from "./pages/Products/Bedroom";
 import Office from "./pages/Products/Office";
 
 // Admin pages
-import Adminpage from "./pages/Admin/Adminpage";
+import Adminpage from "./pages/Admin/AdminPage";
 import AddProducts from "./pages/Admin/AddProducts";
 import EditProduct from "./pages/Admin/EditProduct";
 import Users from "./pages/Admin/Users";

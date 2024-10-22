@@ -14,10 +14,6 @@ const {
   getAllusers,
   updateMyAccount,
   deleteMyAccount,
-  addToCart,
-  viewCart,
-  reduceQuantity,
-  removeFromCart,
 } = require("../controllers/userController");
 
 const { uploadUserPhoto, resizeUserPhoto } = require("../models/userModel");

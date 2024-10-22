@@ -58,7 +58,7 @@ exports.Login = catchAsync(async (req, res, next) => {
   }
 
   const token = generateToken(res, user._id);
-  // I added data:user if there is something wrong
+  
   res.status(200).json({
     status: "success",
     token,
