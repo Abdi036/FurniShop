@@ -6,7 +6,7 @@ const {
   getProduct,
   updateProduct,
   deleteProduct,
-} = require("../controllers/productController");
+} = require("../controllers/ProductController");
 const { protect, restrictTo } = require("../middleware/authController");
 const {
   uploadProductPhoto,
