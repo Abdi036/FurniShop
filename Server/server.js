@@ -15,7 +15,7 @@ const errorMiddleware = require("./controllers/errorController");
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8000;
+// const PORT = process.env.PORT || 8000;
 
 const app = express();
 
@@ -53,6 +53,6 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use(errorMiddleware);
 
 // Start the server
-app.listen(PORT,'0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(5000, "0.0.0.0", () => {
+  console.log(`Server is running on port 5000`);
 });
