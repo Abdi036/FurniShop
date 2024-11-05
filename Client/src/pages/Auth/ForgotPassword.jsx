@@ -21,7 +21,7 @@ export default function ForgotPassword() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/users/forgotPassword",
+        "https://furnishop-api.onrender.com/api/v1/users/forgotPassword",
         { email }
       );
       console.log(response.data);

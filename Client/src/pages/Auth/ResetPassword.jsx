@@ -14,7 +14,7 @@ export default function ResetPassword() {
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `http://localhost:5000/api/v1/users/resetPassword/${token}`,
+        `https://furnishop-api.onrender.com/api/v1/users/resetPassword/${token}`,
         { password, confirmPassword }
       );
       console.log(response.data);

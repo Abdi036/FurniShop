@@ -18,7 +18,7 @@ export default function LatestProducts() {
     async function fetchProducts() {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/v1/products/getAllProducts",
+          "https://furnishop-api.onrender.com/api/v1/products/getAllProducts",
           {
             headers: {
               Authorization: `Bearer ${token}`,

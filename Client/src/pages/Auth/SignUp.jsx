@@ -8,20 +8,21 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { FaSpinner } from "react-icons/fa";  
 
 const defaultTheme = createTheme();
 
 export default function SignUp() {
   const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(false); // Add loading state
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true); // Start loading
     const data = new FormData(event.currentTarget);
     const fullName = data.get("fullName");
     const email = data.get("email");
@@ -30,7 +31,7 @@ export default function SignUp() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/v1/users/signup",
+        "https://furnishop-api.onrender.com/api/v1/users/signup",
         {
           name: fullName,
           email,
@@ -40,10 +41,8 @@ export default function SignUp() {
       );
       const { token } = response.data;
 
-      // Save token to localStorage or use it as needed
       localStorage.setItem("jwtToken", token);
 
-      // Redirect to the login page
       alert("Account created successfully🎉");
       navigate("/login");
     } catch (error) {
@@ -55,6 +54,8 @@ export default function SignUp() {
         error.response?.data?.message || "Signup failed. Please try again."
       );
       setTimeout(() => setError(""), 3000);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -137,8 +138,10 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              disabled={loading}  
+              startIcon={loading ? <FaSpinner className="animate-spin" /> : null}  
             >
-              Sign Up
+              {loading ? "Signing up..." : "Sign Up"}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>

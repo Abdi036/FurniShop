@@ -17,7 +17,7 @@ export default function ProductDetail() {
     async function fetchProducts() {
       try {
         const res = await axios.get(
-          "http://localhost:5000/api/v1/products/getAllProducts",
+          "https://furnishop-api.onrender.com/api/v1/products/getAllProducts",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -68,7 +68,7 @@ export default function ProductDetail() {
       <div className="max-w-5xl mx-auto bg-white rounded-md shadow-md p-6">
         <div className="flex flex-col lg:flex-row items-center lg:items-start">
           <img
-            src={`http://localhost:5000/productImages/${product.photo}`}
+            src={`https://furnishop-api.onrender.com/productImages/${product.photo}`}
             alt={product.name}
             className="w-full lg:w-1/2 h-auto object-cover rounded-md mb-4 lg:mb-0 lg:mr-6 shadow-lg"
           />

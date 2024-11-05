@@ -40,7 +40,7 @@ function AddProducts() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/v1/products/createProduct",
+        "https://furnishop-api.onrender.com/api/v1/products/createProduct",
         formData,
         {
           headers: {

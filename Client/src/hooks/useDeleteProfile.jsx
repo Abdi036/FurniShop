@@ -18,7 +18,7 @@ export function useDeleteMyProfile() {
 
     try {
       const response = await axios.delete(
-        "http://localhost:5000/api/v1/users/deleteMyAccount",
+        "https://furnishop-api.onrender.com/api/v1/users/deleteMyAccount",
         {
           headers: {
             Authorization: `Bearer ${token}`,
