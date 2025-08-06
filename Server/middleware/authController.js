@@ -65,10 +65,8 @@ exports.verifyEmail = catchAsync(async (req, res, next) => {
   user.verified = true;
   user.verificationToken = undefined;
   await user.save({ validateBeforeSave: false });
-  res.status(200).json({
-    status: "success",
-    message: "Email verified successfully! You can now log in.",
-  });
+  // Redirect to frontend success page
+  return res.redirect("http://localhost:5173/email-verified");
 });
 
 exports.Login = catchAsync(async (req, res, next) => {
@@ -170,8 +168,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   const resetURL = `${req.protocol}://localhost:5173/resetPassword/${resetToken}`;
-
-  console.log(req.get("host"));
 
   const textMessage = `If you forgot your password, click the link below to reset it: ${resetURL}.\nIf you didn't request this, please ignore this email.`;
 

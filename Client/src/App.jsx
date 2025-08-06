@@ -28,6 +28,7 @@ import Adminpage from "./pages/Admin/AdminPage";
 import AddProducts from "./pages/Admin/AddProducts";
 import EditProduct from "./pages/Admin/EditProduct";
 import Users from "./pages/Admin/Users";
+import EmailVerified from "./pages/EmailVerified";
 
 export default function App() {
   const router = createBrowserRouter([
@@ -55,6 +56,10 @@ export default function App() {
           <Cancel />
         </ProtectedRoute>
       ),
+    },
+    {
+      path: "/email-verified",
+      element: <EmailVerified />,
     },
 
     {
