@@ -21,7 +21,7 @@ export default function ForgotPassword() {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://furnishop-api.onrender.com/api/v1/users/forgotPassword",
+        "https://furnishop-d6qb.onrender.com/api/v1/users/forgotPassword",
         { email }
       );
       console.log(response.data);
@@ -37,7 +37,6 @@ export default function ForgotPassword() {
       setError(
         error.response?.data?.message || "Failed to send reset link. Try again."
       );
-
       // Clear the error after 3 seconds
       setTimeout(() => setError(""), 3000);
     } finally {

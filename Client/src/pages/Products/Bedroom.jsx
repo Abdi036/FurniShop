@@ -17,7 +17,7 @@ export default function BedRoom() {
     async function fetchProducts() {
       try {
         const res = await axios.get(
-          "https://furnishop-api.onrender.com/api/v1/products/getAllProducts",
+          "https://furnishop-d6qb.onrender.com/api/v1/products/getAllProducts",
           {
             headers: {
               Authorization: `Bearer ${token}`,

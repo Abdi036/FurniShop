@@ -13,7 +13,7 @@ export default function Users() {
     async function fetchUsers() {
       try {
         const response = await axios.get(
-          "https://furnishop-api.onrender.com/api/v1/users/getAllusers",
+          "https://furnishop-d6qb.onrender.com/api/v1/users/getAllusers",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -38,7 +38,7 @@ export default function Users() {
     }
     try {
       await axios.delete(
-        `https://furnishop-api.onrender.com/api/v1/users/deleteUser/${userId}`,
+        `https://furnishop-d6qb.onrender.com/api/v1/users/deleteUser/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

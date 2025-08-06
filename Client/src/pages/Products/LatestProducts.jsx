@@ -4,7 +4,6 @@ import axios from "axios";
 import Card from "../../components/Card";
 import { FaSpinner } from "react-icons/fa";
 
-
 export default function LatestProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,7 +17,7 @@ export default function LatestProducts() {
     async function fetchProducts() {
       try {
         const res = await axios.get(
-          "https://furnishop-api.onrender.com/api/v1/products/getAllProducts",
+          "https://furnishop-d6qb.onrender.com/api/v1/products/getAllProducts",
           {
             headers: {
               Authorization: `Bearer ${token}`,

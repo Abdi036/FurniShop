@@ -56,7 +56,7 @@ export default function Navbar() {
 
   // Construct URL for the profile photo
   const profilePhotoUrl = userPhoto
-    ? `https://furnishop-api.onrender.com/userImages/${userPhoto}`
+    ? `https://furnishop-d6qb.onrender.com/userImages/${userPhoto}`
     : "Unknown_person.jpg";
 
   return (

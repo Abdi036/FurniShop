@@ -22,7 +22,7 @@
 
 //     try {
 //       await axios.patch(
-//         "https://furnishop-api.onrender.com/api/v1/users/updatePassword",
+//         "https://furnishop-d6qb.onrender.com/api/v1/users/updatePassword",
 //         {
 //           currentPassword,
 //           password: newPassword,
@@ -132,7 +132,7 @@ export default function UpdatePassword() {
     setLoading(true); // Start loading
     try {
       await axios.patch(
-        "https://furnishop-api.onrender.com/api/v1/users/updatePassword",
+        "https://furnishop-d6qb.onrender.com/api/v1/users/updatePassword",
         {
           currentPassword,
           password: newPassword,

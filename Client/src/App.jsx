@@ -35,11 +35,7 @@ export default function App() {
     // ResetPassword route on its own
     {
       path: "/resetPassword/:token",
-      element: (
-        <ProtectedRoute>
-          <ResetPassword />
-        </ProtectedRoute>
-      ),
+      element: <ResetPassword />,
     },
     {
       path: "/success",

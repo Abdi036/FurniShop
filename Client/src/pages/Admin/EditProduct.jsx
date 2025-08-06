@@ -22,7 +22,7 @@ export default function EditProduct() {
     async function fetchProduct() {
       try {
         const res = await axios.get(
-          `https://furnishop-api.onrender.com/api/v1/products/getProduct/${id}`,
+          `https://furnishop-d6qb.onrender.com/api/v1/products/getProduct/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ export default function EditProduct() {
 
     try {
       await axios.patch(
-        `https://furnishop-api.onrender.com/api/v1/products/updateProduct/${id}`,
+        `https://furnishop-d6qb.onrender.com/api/v1/products/updateProduct/${id}`,
         product,
         {
           headers: {

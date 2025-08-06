@@ -1,39 +1,52 @@
 import { useState } from "react";
 import axios from "axios";
-import { Button, TextField, Box, Typography, Container } from "@mui/material";
-import { useParams } from "react-router-dom";
+import {
+  Button,
+  TextField,
+  Box,
+  Typography,
+  Container,
+  CircularProgress,
+} from "@mui/material";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const { token } = useParams();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await axios.patch(
-        `https://furnishop-api.onrender.com/api/v1/users/resetPassword/${token}`,
+        `https://furnishop-d6qb.onrender.com/api/v1/users/resetPassword/${token}`,
         { password, confirmPassword }
       );
       console.log(response.data);
       setMessage("Password reset successfully.");
       setError("");
 
-      // Clear the message after 3 seconds
-      setTimeout(() => setMessage(""), 3000);
-
       setPassword("");
       setConfirmPassword("");
+
+      // Redirect to login after 2 seconds
+      setTimeout(() => {
+        setMessage("");
+        navigate("/login");
+      }, 1500);
     } catch (error) {
       setMessage("");
       setError(
         error.response?.data?.message || "Failed to reset password. Try again."
       );
-
-      // Clear the error after 3 seconds
       setTimeout(() => setError(""), 3000);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,8 +92,9 @@ export default function ResetPassword() {
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
+            disabled={loading}
           >
-            Reset Password
+            {loading ? <CircularProgress size={24} /> : "Reset Password"}
           </Button>
         </Box>
         {message && (

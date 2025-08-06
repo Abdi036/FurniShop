@@ -16,7 +16,7 @@ export default function ViewProducts({ searchTerm }) {
     async function fetchProducts() {
       try {
         const res = await axios.get(
-          "https://furnishop-api.onrender.com/api/v1/products/getAllProducts",
+          "https://furnishop-d6qb.onrender.com/api/v1/products/getAllProducts",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -50,7 +50,7 @@ export default function ViewProducts({ searchTerm }) {
     }
     try {
       await axios.delete(
-        `https://furnishop-api.onrender.com/api/v1/products/deleteProduct/${productId}`,
+        `https://furnishop-d6qb.onrender.com/api/v1/products/deleteProduct/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

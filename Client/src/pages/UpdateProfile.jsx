@@ -21,7 +21,7 @@ export default function UpdateProfile() {
   const userPhoto = useSelector((state) => state.auth.user?.photo);
 
   const profilePhotoUrl = userPhoto
-    ? `https://furnishop-api.onrender.com/userImages/${userPhoto}`
+    ? `https://furnishop-d6qb.onrender.com/userImages/${userPhoto}`
     : "Unknown_person.jpg";
 
   const [photoPreview, setPhotoPreview] = useState(profilePhotoUrl || null);
@@ -60,7 +60,7 @@ export default function UpdateProfile() {
 
     try {
       const res = await axios.patch(
-        "https://furnishop-api.onrender.com/api/v1/users/updateMyAccount",
+        "https://furnishop-d6qb.onrender.com/api/v1/users/updateMyAccount",
         form,
         {
           headers: {

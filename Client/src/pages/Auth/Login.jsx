@@ -30,7 +30,7 @@
 
 //     try {
 //       const response = await axios.post(
-//         "https://furnishop-api.onrender.com/api/v1/users/login",
+//         "https://furnishop-d6qb.onrender.com/api/v1/users/login",
 //         { email, password }
 //       );
 
@@ -168,7 +168,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "https://furnishop-api.onrender.com/api/v1/users/login",
+        "https://furnishop-d6qb.onrender.com/api/v1/users/login",
         { email, password }
       );
 

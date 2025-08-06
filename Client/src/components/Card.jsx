@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useAddToCart from "../hooks/useAddToCart";
 import { FaShoppingCart, FaTrashAlt, FaPencilAlt } from "react-icons/fa";
 
-
 function Card({ product, isAdmin, onEdit, onDelete }) {
   const addToCart = useAddToCart();
 
@@ -13,7 +12,7 @@ function Card({ product, isAdmin, onEdit, onDelete }) {
         <div className="flex-1 flex flex-col">
           {/* Image */}
           <img
-            src={`https://furnishop-api.onrender.com/productImages/${product.photo}`}
+            src={`https://furnishop-d6qb.onrender.com/productImages/${product.photo}`}
             alt={product.name}
             className="w-full h-48 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
           />
@@ -33,7 +32,7 @@ function Card({ product, isAdmin, onEdit, onDelete }) {
           {/* Image */}
           <Link to={`/product/${product._id}`}>
             <img
-              src={`https://furnishop-api.onrender.com/productImages/${product.photo}`}
+              src={`https://furnishop-d6qb.onrender.com/productImages/${product.photo}`}
               alt={product.name}
               className="w-full h-48 object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
             />

@@ -7,7 +7,7 @@ import {
   decreaseQuantity,
   removeFromCart,
 } from "../redux/cart/cartSlice";
-import { useState } from "react";  
+import { useState } from "react";
 
 function Cart() {
   const cart = useSelector((state) => state.cart.cartItems);
@@ -35,7 +35,7 @@ function Cart() {
       );
 
       const response = await fetch(
-        "https://furnishop-api.onrender.com/api/v1/payment/create-payment-intent",
+        "https://furnishop-d6qb.onrender.com/api/v1/payment/create-payment-intent",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -91,7 +91,7 @@ function Cart() {
             >
               <div className="flex items-center mb-4 md:mb-0">
                 <img
-                  src={`https://furnishop-api.onrender.com/productImages/${item.photo}`}
+                  src={`https://furnishop-d6qb.onrender.com/productImages/${item.photo}`}
                   alt={item.name}
                   className="w-20 h-20 md:w-24 md:h-24 rounded mr-4"
                 />

@@ -11,7 +11,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { FaSpinner } from "react-icons/fa";  
+import { FaSpinner } from "react-icons/fa";
 
 const defaultTheme = createTheme();
 
@@ -31,7 +31,7 @@ export default function SignUp() {
 
     try {
       const response = await axios.post(
-        "https://furnishop-api.onrender.com/api/v1/users/signup",
+        "https://furnishop-d6qb.onrender.com/api/v1/users/signup",
         {
           name: fullName,
           email,
@@ -138,8 +138,10 @@ export default function SignUp() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              disabled={loading}  
-              startIcon={loading ? <FaSpinner className="animate-spin" /> : null}  
+              disabled={loading}
+              startIcon={
+                loading ? <FaSpinner className="animate-spin" /> : null
+              }
             >
               {loading ? "Signing up..." : "Sign Up"}
             </Button>
