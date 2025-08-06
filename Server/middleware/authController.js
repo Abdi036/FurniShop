@@ -66,7 +66,7 @@ exports.verifyEmail = catchAsync(async (req, res, next) => {
   user.verificationToken = undefined;
   await user.save({ validateBeforeSave: false });
   // Redirect to frontend success page
-  return res.redirect("http://localhost:5173/email-verified");
+  return res.redirect(`${process.env.FRONTEND_URL}/email-verified`);
 });
 
 exports.Login = catchAsync(async (req, res, next) => {
