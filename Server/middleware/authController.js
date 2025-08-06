@@ -21,23 +21,52 @@ const generateToken = (res, _id) => {
 };
 
 exports.Signup = catchAsync(async (req, res, next) => {
+  // 1. Create user
+  const verificationToken = crypto.randomBytes(32).toString("hex");
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     confirmPassword: req.body.confirmPassword,
     role: req.body.role,
+    verificationToken,
   });
 
-  const token = generateToken(res, newUser._id);
+  // 2. Send verification email
+  const verificationURL = `${req.protocol}://${req.get(
+    "host"
+  )}/api/v1/users/verify/${verificationToken}`;
+  const message = `Please verify your email by clicking the following link: ${verificationURL}`;
+  const htmlMessage = `<p>Please verify your email by clicking the link below:</p><a href="${verificationURL}">Verify Email</a>`;
+  await sendEmail({
+    email: newUser.email,
+    subject: "Email Verification - Furnishop",
+    text: message,
+    html: htmlMessage,
+  });
 
   res.status(201).json({
     status: "success",
-    token,
+    message:
+      "Signup successful! Please check your email to verify your account.",
     data: {
       user: newUser,
     },
   });
+});
+
+// Email verification handler
+exports.verifyEmail = catchAsync(async (req, res, next) => {
+  const { token } = req.params;
+  const user = await User.findOne({ verificationToken: token });
+  if (!user) {
+    return next(new AppError("Invalid or expired verification token", 400));
+  }
+  user.verified = true;
+  user.verificationToken = undefined;
+  await user.save({ validateBeforeSave: false });
+  // Redirect to frontend success page
+  return res.redirect("http://localhost:5173/email-verified");
 });
 
 exports.Login = catchAsync(async (req, res, next) => {
@@ -53,12 +82,18 @@ exports.Login = catchAsync(async (req, res, next) => {
     return next(new AppError("No user with this email!", 404));
   }
 
+  if (!user.verified) {
+    return next(
+      new AppError("Please verify your email before logging in.", 401)
+    );
+  }
+
   if (!(await user.correctPassword(password, user.password))) {
     return next(new AppError("Incorrect email or password", 401));
   }
 
   const token = generateToken(res, user._id);
-  
+
   res.status(200).json({
     status: "success",
     token,
@@ -133,8 +168,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   const resetURL = `${req.protocol}://localhost:5173/resetPassword/${resetToken}`;
-
-  console.log(req.get("host"));
 
   const textMessage = `If you forgot your password, click the link below to reset it: ${resetURL}.\nIf you didn't request this, please ignore this email.`;
 

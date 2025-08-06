@@ -8,6 +8,7 @@ const {
   forgotPassword,
   resetPassword,
   updatePassword,
+  verifyEmail,
 } = require("../middleware/authController");
 const {
   deleteUser,
@@ -20,7 +21,9 @@ const { uploadUserPhoto, resizeUserPhoto } = require("../models/userModel");
 const router = express.Router();
 
 // auth
+
 router.post("/signup", Signup);
+router.get("/verify/:token", verifyEmail);
 router.post("/login", Login);
 
 router.post("/forgotPassword", forgotPassword);
