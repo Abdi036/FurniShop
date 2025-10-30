@@ -8,7 +8,7 @@ const {
   forgotPassword,
   resetPassword,
   updatePassword,
-  verifyEmail,
+  // verifyEmail,
 } = require("../middleware/authController");
 const {
   deleteUser,
@@ -23,7 +23,7 @@ const router = express.Router();
 // auth
 
 router.post("/signup", Signup);
-router.get("/verify/:token", verifyEmail);
+// router.get("/verify/:token", verifyEmail);
 router.post("/login", Login);
 
 router.post("/forgotPassword", forgotPassword);
