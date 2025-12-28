@@ -15,7 +15,7 @@ export default function Adminpage() {
 
   useEffect(() => {
     if (!link) {
-      navigate("/admin/users");
+      setActiveSection("users");
       return;
     }
     switch (link) {
@@ -36,9 +36,8 @@ export default function Adminpage() {
         break;
       default:
         setActiveSection("users");
-        navigate("/admin/users");
     }
-  }, [link, navigate]);
+  }, [link]);
 
   return (
     <div className="grid grid-cols-4 h-auto bg-gray-100">

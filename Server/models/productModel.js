@@ -38,6 +38,11 @@ const productSchema = new mongoose.Schema({
   },
 });
 
+// Indexes for better query performance
+productSchema.index({ price: 1 });
+productSchema.index({ category: 1 });
+productSchema.index({ slug: 1 });
+
 // Multer storage setup for product image upload
 const multerStorage = multer.memoryStorage();
 

@@ -1,41 +1,29 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/Card";
+import {
+  fetchProducts,
+  deleteProduct,
+} from "../../redux/products/productSlice";
+import Loading from "../../components/Loading";
 
 export default function ViewProducts({ searchTerm }) {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const token = useSelector((state) => state.auth.token);
-  const isAdmin = useSelector((state) => state.auth.user?.role) === "admin";
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const { items: products, status } = useSelector((state) => state.products);
+  const token = useSelector((state) => state.auth.token);
+  const isAdmin = useSelector((state) => state.auth.user?.role) === "admin";
+
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const res = await axios.get(
-          "https://furnishop-d6qb.onrender.com/api/v1/products/getAllProducts",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        setProducts(res.data.data.products);
-      } catch (error) {
-        console.error("There was an error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
+    if (status === "idle") {
+      dispatch(fetchProducts());
     }
+  }, [status, dispatch]);
 
-    fetchProducts();
-  }, [token]);
-
-  // Function to filter products based on searchTerm
+  // Filter products based on searchTerm (Client-side filtering)
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -48,28 +36,21 @@ export default function ViewProducts({ searchTerm }) {
     if (!isConfirmed) {
       return;
     }
-    try {
-      await axios.delete(
-        `https://furnishop-d6qb.onrender.com/api/v1/products/deleteProduct/${productId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      setProducts(products.filter((product) => product._id !== productId));
-    } catch (error) {
-      console.error("There was an error deleting the product:", error);
-    }
+    dispatch(deleteProduct({ id: productId, token }));
   }
 
   async function handleEdit(id) {
     navigate(`/editproduct/${id}`);
   }
 
-  if (loading) {
-    return <div className="text-center text-lg">Loading products...</div>;
+  if (status === "loading") {
+    return <Loading />;
+  }
+
+  if (status === "failed") {
+    return (
+      <div className="text-center text-red-500">Error loading products.</div>
+    );
   }
 
   return (

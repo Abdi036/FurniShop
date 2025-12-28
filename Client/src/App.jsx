@@ -1,47 +1,55 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import AppLayout from "./components/AppLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Loading from "./components/Loading";
 
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Success from "./pages/Success";
-import Cancel from "./pages/Cancel";
-import UpdateProfile from "./pages/UpdateProfile";
+const Home = lazy(() => import("./pages/Home"));
+const Cart = lazy(() => import("./pages/Cart"));
+const Success = lazy(() => import("./pages/Success"));
+const Cancel = lazy(() => import("./pages/Cancel"));
+const UpdateProfile = lazy(() => import("./pages/UpdateProfile"));
 
 // Auth Pages
-import ResetPassword from "./pages/Auth/ResetPassword";
-import UpdatePassword from "./pages/Auth/UpdatePassword";
-import Login from "./pages/Auth/Login";
-import SignUp from "./pages/Auth/SignUp";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
+const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword"));
+const UpdatePassword = lazy(() => import("./pages/Auth/UpdatePassword"));
+const Login = lazy(() => import("./pages/Auth/Login"));
+const SignUp = lazy(() => import("./pages/Auth/SignUp"));
+const ForgotPassword = lazy(() => import("./pages/Auth/ForgotPassword"));
 
 //product pages
-import ProductDetail from "./pages/Products/ProductDetail";
-import Kitchen from "./pages/Products/Kitchen";
-import LivingRoom from "./pages/Products/LivingRoom";
-import BedRoom from "./pages/Products/Bedroom";
-import Office from "./pages/Products/Office";
+const ProductDetail = lazy(() => import("./pages/Products/ProductDetail"));
+const Kitchen = lazy(() => import("./pages/Products/Kitchen"));
+const LivingRoom = lazy(() => import("./pages/Products/LivingRoom"));
+const BedRoom = lazy(() => import("./pages/Products/Bedroom"));
+const Office = lazy(() => import("./pages/Products/Office"));
 
 // Admin pages
-import Adminpage from "./pages/Admin/AdminPage";
-import AddProducts from "./pages/Admin/AddProducts";
-import EditProduct from "./pages/Admin/EditProduct";
-import Users from "./pages/Admin/Users";
-import EmailVerified from "./pages/EmailVerified";
+const Adminpage = lazy(() => import("./pages/Admin/AdminPage"));
+const AddProducts = lazy(() => import("./pages/Admin/AddProducts"));
+const EditProduct = lazy(() => import("./pages/Admin/EditProduct"));
+const Users = lazy(() => import("./pages/Admin/Users"));
+const EmailVerified = lazy(() => import("./pages/EmailVerified"));
 
 export default function App() {
   const router = createBrowserRouter([
     // ResetPassword route on its own
     {
       path: "/resetPassword/:token",
-      element: <ResetPassword />,
+      element: (
+        <Suspense fallback={<Loading />}>
+          <ResetPassword />
+        </Suspense>
+      ),
     },
     {
       path: "/success",
       element: (
         <ProtectedRoute>
-          <Success />
+          <Suspense fallback={<Loading />}>
+            <Success />
+          </Suspense>
         </ProtectedRoute>
       ),
     },
@@ -49,13 +57,19 @@ export default function App() {
       path: "/cancel",
       element: (
         <ProtectedRoute>
-          <Cancel />
+          <Suspense fallback={<Loading />}>
+            <Cancel />
+          </Suspense>
         </ProtectedRoute>
       ),
     },
     {
       path: "/email-verified",
-      element: <EmailVerified />,
+      element: (
+        <Suspense fallback={<Loading />}>
+          <EmailVerified />
+        </Suspense>
+      ),
     },
 
     {
@@ -102,20 +116,11 @@ export default function App() {
             </ProtectedRoute>
           ),
         },
-
         {
-          path: "/addproducts",
+          path: "/updateProfile",
           element: (
             <ProtectedRoute>
-              <AddProducts />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "/admin/:link",
-          element: (
-            <ProtectedRoute>
-              <Adminpage />
+              <UpdateProfile />
             </ProtectedRoute>
           ),
         },
@@ -128,10 +133,18 @@ export default function App() {
           ),
         },
         {
-          path: "/updateProfile",
+          path: "/admin/:link?",
           element: (
             <ProtectedRoute>
-              <UpdateProfile />
+              <Adminpage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "/addproduct",
+          element: (
+            <ProtectedRoute>
+              <AddProducts />
             </ProtectedRoute>
           ),
         },
@@ -143,20 +156,31 @@ export default function App() {
             </ProtectedRoute>
           ),
         },
-
-        {
-          path: "/signup",
-          element: <SignUp />,
-        },
-        {
-          path: "/login",
-          element: <Login />,
-        },
-        {
-          path: "/forgotPassword",
-          element: <ForgotPassword />,
-        },
       ],
+    },
+    {
+      path: "/login",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <Login />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/signup",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <SignUp />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/forgotPassword",
+      element: (
+        <Suspense fallback={<Loading />}>
+          <ForgotPassword />
+        </Suspense>
+      ),
     },
   ]);
 
